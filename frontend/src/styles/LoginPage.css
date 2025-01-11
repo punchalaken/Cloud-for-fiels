@@ -1,0 +1,69 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    background-color: #f0fff0;
+  }
+  
+  h1 {
+    color: #2e8b57;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 250px;
+  }
+  
+  button {
+    background-color: #2e8b57;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #3cb371;
+  }
+  
+
+.error-container {
+    position: relative;
+    min-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.error-container::before {
+    content: attr(data-placeholder);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: lightgray;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-container[data-placeholder]:not(:has(p.error))::before {
+    visibility: visible;
+}
+
+.error {
+    color: red;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
