@@ -1,0 +1,140 @@
+.user-info {
+    max-width: 350px;
+    height: calc(100vh - 150px);
+    padding: 20px;
+    padding-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-info h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.user-info label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.user-info div {
+    margin-bottom: 15px;
+}
+
+.user-info span {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+}
+
+.user-info input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.user-info button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-info button:hover {
+    background-color: #0056b3;
+}
+
+.user-info .logout-btn {
+    background-color: #dc3545;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.user-info .logout-btn:hover {
+    background-color: #a71d2a;
+}
+
+.user-info h3 {
+    margin-top: 30px;
+    color: #333;
+}
+
+.user-info input[type="password"] {
+    margin-bottom: 10px;
+}
+
+.user-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.user-info-row label {
+    font-weight: bold;
+    color: #555;
+    margin-right: 10px;
+}
+
+.user-info-row span {
+    flex: 1;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.user-info .save-button:hover {
+    background-color: #2e8b57;
+}
+
+.user-info .cancel-button:hover {
+    background-color: red;
+}
+
+
+@keyframes highlight-animation {
+    0% {
+        background-color: #fffde7;
+        box-shadow: 0 0 10px 5px rgba(249, 168, 37, 0.5);
+        border-color: #f9a825;
+    }
+    50% {
+        background-color: #fff9c4;
+        box-shadow: 0 0 15px 10px rgba(249, 168, 37, 0.3);
+    }
+    100% {
+        background-color: #ffffff;
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        border-color: #ccc;
+    }
+}
+
+.highlight-row {
+    animation: highlight-animation 1s ease-out;
+}

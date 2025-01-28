@@ -1,28 +1,32 @@
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 2px solid #ddd;
-}
-
-th {
-    background-color: #f4f4f4;
-}
-
-button {
-    margin: 0 5px;
-}
-
-.logout {
+.dashboard-container {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    margin-top: 50px;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.calculateSummary {
-    margin-top: 50px;
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 5fr; /* Левая колонка занимает 1 часть, правая 2 части */
+    grid-template-rows: auto auto; /* Две строки: верхняя для загрузки файла, нижняя для управления */
+    gap: 10px; /* Расстояние между элементами */
+    align-items: start; /* Выравниваем элементы по верху */
+}
+
+/* UserInfo занимает всю левую колонку */
+.dashboard-content > .user-info {
+    grid-column: 1; /* Левая колонка */
+    grid-row: 1 / span 2; /* Занимает две строки */
+    max-width: 300px; /* Можно ограничить ширину */
+}
+
+/* FileUpload располагается в правой верхней ячейке */
+.dashboard-content > .file-upload {
+    grid-column: 2; /* Правая колонка */
+    grid-row: 1; /* Верхняя строка */
+}
+
+/* FileManagement располагается в правой нижней ячейке */
+.dashboard-content > .file-management {
+    grid-column: 2; /* Правая колонка */
+    grid-row: 2; /* Нижняя строка */
 }
