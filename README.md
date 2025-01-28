@@ -4,7 +4,10 @@
 * Наличие npm на компьютере (скачать можно тут https://nodejs.org/en)
 * Наличие python на компьютере (скачать можно тут https://www.python.org/downloads/)
   
-### 1. Клонировать репозеторий командой git clone https://github.com/punchalaken/Cloud-for-fiels.git
+### 1. Клонировать репозеторий командой git clone 
+```
+https://github.com/punchalaken/Cloud-for-fiels.git
+```
 
 ### 2. Открыть папку с проектом и скачать все нужные файлы и фреймфорки выполнить следущие команды  
 1. ```cd backend ```
