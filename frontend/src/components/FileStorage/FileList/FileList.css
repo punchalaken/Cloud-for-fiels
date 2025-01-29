@@ -1,0 +1,22 @@
+/* Контейнер списка файлов */
+.file-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 13px;
+}
+
+/* Заголовок для каждого пользователя */
+.file-list-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.login-admin {
+    font-size: 3vh;
+    color: #00ff37;
+}
