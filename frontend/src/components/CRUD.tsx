@@ -6,10 +6,6 @@ import { StartPages } from './StartPage/StartPages';
 import FilePage from "./FileStorage/FilePage/FilePage";
 import AdminPanel from "./AdminPanelPage/AdminPanel";
 
-
-/**
- * Главный компомент с навигацией по сайту
- */
 function CRUD() {
     return (
         <div className="container navigation-menu">

@@ -95,7 +95,7 @@ const Login: React.FC = () => {
                 <p>Первый раз у нас? <NavLink to="/register">Регистрация</NavLink></p>
             </div>
 		</div>
-	);
+);
 };
 
 

@@ -3,18 +3,10 @@ import './StartPages.css';
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 
-
-/**
- * Компонент для отображения главной страницы сайта.
- * Использует текущее местоположение для определения активной ссылки.
- */
 export function StartPages() {
-    // Получаем данные о состоянии пользователя из Redux store
-    const loginUser = useSelector((state: RootState) => state.users.loginUser); // loginUser.name: apuox
-    const activeState = useSelector((state: RootState) => state.users.activeState); // activeState: auth
+    const loginUser = useSelector((state: RootState) => state.users.loginUser);
+    const activeState = useSelector((state: RootState) => state.users.activeState);
 
-
-    // Рендеринг навигационного меню
     return (
         <nav className="crud-menu">
             {activeState === 'auth' && loginUser ? (

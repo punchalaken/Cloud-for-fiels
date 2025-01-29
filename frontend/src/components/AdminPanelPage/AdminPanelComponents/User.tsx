@@ -15,7 +15,7 @@ const User: React.FC<UserTypeAdminPanel> = ({
 
     useEffect(() => {
         const fetchDataDelete = async () => {
-            if (!removeItem) return; // Проверяем, что removeItem определен
+        if (!removeItem) return;
             try {
                 const response = await deleteUser(id);
                 if (response && response.status === 200) {
