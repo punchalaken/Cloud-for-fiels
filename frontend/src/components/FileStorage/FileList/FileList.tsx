@@ -28,7 +28,7 @@ const FileList: React.FC<FileListProps> = ({
     const safeFileList = Array.isArray(fileList) ? fileList : [];
 
     if (!isLoaded) {
-        return <div>No files available! =(</div>;
+        return <div>No files available!</div>;
     }
 
     return (

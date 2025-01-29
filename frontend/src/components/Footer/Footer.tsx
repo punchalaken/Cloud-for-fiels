@@ -8,7 +8,7 @@ const Footer:React.FC = () => {
     return (
         <footer className="footer">
             <div className="footer-name">
-                © 2024 Клюев Семен
+                Рады Вас приветствовать!
             </div>
             <p><NavLink to="/" className="footer-home-link">Главная страница</NavLink></p>
             <ul className="footer-link">
