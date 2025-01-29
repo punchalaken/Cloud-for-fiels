@@ -20,7 +20,6 @@ const Login: React.FC = () => {
 	const [ memory, setMemory ] = useState<boolean>(false);
 	const [ isLoading, setIsLoading ] = useState<boolean>(false);
 
-	// загрузка из локального хранилища
 	useEffect(() => {
 		const effectUsername = localStorage.getItem('username');
 		const effectPassword = localStorage.getItem('password');
