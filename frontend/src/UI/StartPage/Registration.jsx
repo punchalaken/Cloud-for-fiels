@@ -33,10 +33,8 @@ export const Registration = ({ SetViewPage }) => {
     return response.json()
   })
   .then((data) => {
-    // console.log(data)
     if (data.id) {
       setErrorMsg("Успешно создан аккаунт")
-      // SetViewPage("Authorization")
     } else {
       console.log(data.login[0])
       setErrorMsg("Данный логин уже используется")

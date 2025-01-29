@@ -1,8 +1,6 @@
 import { useState } from "react"
 import {Authorization} from "./Authorization"
 import { Registration } from "./Registration"
-import { FilesWelcome } from "../files/FilesWelcome"
-
 
 export const StartPage = () => {
 

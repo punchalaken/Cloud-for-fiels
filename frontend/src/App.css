@@ -1,39 +1,36 @@
-/* Общие стили */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f0f0;
-  color: #4b2e83; /* Темно-фиолетовый цвет текста */
+  color: #4b2e83;
   margin: 0;
   padding: 0;
 }
 
-/* Контейнер формы */
 .container--form {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Занимает всю высоту экрана */
+  height: 100vh; 
 }
 
 .auth--form {
-  background-color: #ffffff; /* Белый фон формы */
+  background-color: #ffffff; 
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 300px; /* Ширина формы */
-  transition: transform 0.3s ease; /* Анимация при наведении */
+  width: 300px;
+  transition: transform 0.3s ease; 
 }
 
 .auth--form:hover {
-  transform: scale(1.05); /* Увеличение формы при наведении */
+  transform: scale(1.05);
 }
 
 h2 {
-  color: #6a3f8e; /* Светло-фиолетовый цвет заголовка */
+  color: #6a3f8e;
   text-align: center;
 }
 
-/* Блоки ввода */
 .input--block {
   margin-bottom: 15px;
 }
@@ -42,77 +39,74 @@ h2 {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #6a3f8e; /* Фиолетовая рамка */
+  border: 1px solid #6a3f8e;
   border-radius: 5px;
-  transition: border-color 0.3s ease; /* Анимация изменения цвета рамки */
+  transition: border-color 0.3s ease;
 }
 
 .input--form:focus {
-  border-color: #9b5edc; /* Более светлая фиолетовая рамка при фокусе */
+  border-color: #9b5edc;
 }
 
-/* Сообщение об ошибке */
+
 .errorMsg {
   color: red;
   font-size: 12px;
 }
 
-/* Кнопки */
 .buttons--block {
   display: flex;
   justify-content: space-between;
 }
 
 .button--form {
-  background-color: #6a3f8e; /* Фиолетовый фон кнопок */
+  background-color: #6a3f8e;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Анимации для кнопок */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .button--form:hover {
-  background-color: #9b5edc; /* Светлее фиолетовый при наведении */
-  transform: translateY(-2px); /* Подъем кнопки при наведении */
+  background-color: #9b5edc;
+  transform: translateY(-2px);
 }
 
-/* Страница показа файлов */
+
 .container {
   padding: 20px;
 }
 
 .button--update--files {
-  background-color: #6a3f8e; /* Фиолетовая кнопка обновления */
+  background-color: #6a3f8e;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Анимации для кнопок */
+  transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .button--update--files:hover {
-  background-color: #9b5edc; /* Светлее фиолетовый при наведении */
+  background-color: #9b5edc; 
 }
 
-/* Стили для списка пользователей */
 ul {
-  list-style-type: none; /* Убираем маркеры списка */
-  padding-left: 0; /* Убираем отступ слева */
+  list-style-type: none;
+  padding-left: 0;
 }
 
 li {
-  background-color: #eae7f2; /* Светло-фиолетовый фон для элементов списка */
+  background-color: #eae7f2;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
 }
 
-/* Стили для кнопки перехода в файловое хранилище */
 button {
-  background-color: #6a3f8e; /* Фиолетовая кнопка */
+  background-color: #6a3f8e; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -121,34 +115,14 @@ button {
 }
 
 button:hover {
-  background-color: #9b5edc; /* Светлее фиолетовый при наведении */
+  background-color: #9b5edc;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Основные цвета */
 :root {
-  --primary-color: #8A4DFF; /* Основной фиолетовый цвет */
-  --secondary-color: #FFA7C4; /* Розово-фиолетовый акцентный цвет */
-  --text-color: #333; /* Цвет текста */
-  --background-color: #f9f9ff; /* Фоновй цвет страницы */
+  --primary-color: #8A4DFF; 
+  --secondary-color: #FFA7C4;
+  --text-color: #333;
+  --background-color: #f9f9ff;
 }
 
 *,
@@ -177,7 +151,7 @@ h1, h2 {
   color: var(--primary-color);
   margin-bottom: 30px;
 }
-/* Контейнер формы */
+
 .container--form {
   display: flex;
   justify-content: center;

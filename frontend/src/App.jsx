@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import { StartPage } from './UI/StartPage/StartPage'
 import { FilesWelcome } from './UI/files/FilesWelcome'

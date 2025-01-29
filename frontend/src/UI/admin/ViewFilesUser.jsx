@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import DownloadButton from '../files/ButtonDownload';
 import { sortByDate } from '../sortingDate';
@@ -6,24 +6,20 @@ import { sortByDate } from '../sortingDate';
 export const ViewFilesUser = () => {
 
   function formatDate(dateString) {
-    // Создаем объект Date из строки
     const date = new Date(dateString);
 
-    // Определяем массив с названиями месяцев
     const months = [
       "января", "февраля", "марта", "апреля",
       "мая", "июня", "июля", "августа",
       "сентября", "октября", "ноября", "декабря"
     ];
 
-    // Получаем компоненты даты
-    const hours = String(date.getHours()).padStart(2, '0'); // Часы
-    const minutes = String(date.getMinutes()).padStart(2, '0'); // Минуты
-    const day = String(date.getDate()).padStart(2, '0'); // День
-    const month = months[date.getMonth()]; // Месяц
-    const year = date.getFullYear(); // Год
+    const hours = String(date.getHours()).padStart(2, '0'); 
+    const minutes = String(date.getMinutes()).padStart(2, '0'); 
+    const day = String(date.getDate()).padStart(2, '0'); 
+    const month = months[date.getMonth()]; 
+    const year = date.getFullYear(); 
 
-    // Форматируем строку
     return `${hours}:${minutes} ${day} ${month} ${year}`;
   }
 
@@ -31,7 +27,6 @@ export const ViewFilesUser = () => {
   const { id, name } = location.state || {}
   const [viewFiles, setViewFiles] = useState([])
 
-  // const [viewFiles, setViewFiles] = useState([])
     const [lastFileUpload, setLastFileUpload] = useState(new Date())
 
     useEffect(() => {

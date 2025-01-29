@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 
 export const AdminPage = () => {
@@ -7,6 +7,7 @@ export const AdminPage = () => {
   if (!location.state) {
     return <h1>Авторизуйтесь!</h1>
   }
+
   const [viewUsers, setViewUsers] = useState([])
   const [lastUsersUpload, setLastUsersUpload] = useState(new Date())
   const navigate = useNavigate()
@@ -43,8 +44,6 @@ export const AdminPage = () => {
 
   const goFilesUser = (user) => {
       navigate('/files_user', { state: user })
-    
-    // navigate('/files', { state: data.user[0] })
   }
   
   return <div className="container">

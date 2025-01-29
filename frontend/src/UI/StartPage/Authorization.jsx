@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Импортируем useNavigate
+import { useNavigate } from "react-router-dom";
 import "./authorization.css";
 
 export const Authorization = ({ SetViewPage }) => {
@@ -8,7 +8,7 @@ export const Authorization = ({ SetViewPage }) => {
     password: "",
   });
   const [errorMsg, setErrorMsg] = useState('');
-  const navigate = useNavigate(); // Создаем экземпляр navigate
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +33,7 @@ export const Authorization = ({ SetViewPage }) => {
     .then((data) => {
       if (data.status_code === 200) {
         console.log("Вы успешно авторизовались")
-        navigate('/files', { state: data.user[0] }); // Перенаправляем на страницу файлов
+        navigate('/files', { state: data.user[0] });
       } else {
         setErrorMsg("Неверный логин или пароль");
       }

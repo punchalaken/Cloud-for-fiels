@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const UploadFiles = ({ userId }) => {
   const [selectedFiles, setSelectedFiles] = useState(null);
@@ -22,7 +22,6 @@ const UploadFiles = ({ userId }) => {
     formData.append('user_id', userId)
 
     try {
-      // Здесь происходит отправка файлов на сервер
       const response = await fetch(serverUrl, {
         method: 'POST',
         body: formData,
