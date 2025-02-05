@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 // import Cookies from 'js-cookie';
 
 
-export const BASE_URL = 'http://localhost:8000/api';
+export const BASE_URL = 'http://localhost:7000/api';
 // export const BASE_URL = 'http://89.111.154.234:80/api';
 
 const getCookie = (name: string): string | null => {
@@ -32,15 +32,6 @@ export async function signUp(data: { email: string; password: string; username: 
       withCredentials: true, // Включаем передачу кук
     });
     if (response.status === 201) {
-      const token = await response.data;
-      console.log('смотрим что в токене при регестрации:', token);
-      // Сохраняем токен в localStorage или Redux
-      if (token) {
-        localStorage.setItem('token', token);
-        console.log('Token saved:', token);
-      } else {
-        console.error('Token not found in response');
-      }
       return response.data;
     }
   } catch (error) {

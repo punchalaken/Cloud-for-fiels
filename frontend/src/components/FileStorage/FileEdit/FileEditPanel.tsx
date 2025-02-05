@@ -16,15 +16,19 @@ function FileEditPanel({ currentFile, setCurrentFile, setFiles }: FileEditPanelP
   const onClickHandler = (action: string) => {
     if (action === 'download') {
       const downloadFileHandler = async () => {
+
         try {
           if (!currentFile?.id || !currentFile?.file_name) {
             console.error("Файл или его идентификатор отсутствуют.");
             return;
           }
+
           // Получаем ссылку для скачивания
           const response = await getDownloadLink(currentFile.id);
           const data = response.data;
           const link = `${BASE_URL}/link/${data.link}/`;
+
+
 
           // Создаем элемент ссылки и инициируем загрузку
           const a = document.createElement('a');

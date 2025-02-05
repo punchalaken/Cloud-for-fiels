@@ -11,11 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
-
-load_dotenv()
-
 from pathlib import Path
 from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -105,18 +104,6 @@ DATABASES = {
         "PASSWORD": os.getenv("DB_PASSWORD", "default_password"),
     }
 }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         # "NAME": "diplom_new",
-#         'NAME': 'diplom_serv',
-#         "HOST": "127.0.0.1",
-#         "PORT": "5432",
-#         "USER": "postgres",
-#         "PASSWORD": "1",
-#     }
-# }
 
 
 # Password validation

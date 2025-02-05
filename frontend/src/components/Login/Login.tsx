@@ -22,11 +22,9 @@ const Login: React.FC = () => {
 
 	useEffect(() => {
 		const effectUsername = localStorage.getItem('username');
-		const effectPassword = localStorage.getItem('password');
 
-		if (effectUsername && effectPassword) {
+		if (effectUsername) {
 			setUsername(effectUsername);
-			setPassword(effectPassword);
 			setMemory(true);
 		}
 	}, [])
@@ -38,15 +36,12 @@ const Login: React.FC = () => {
 		try {
 			if (memory) {
 				localStorage.setItem('username', username);
-				localStorage.setItem('password', password);
 			} else {
 				localStorage.removeItem('username');
-				localStorage.removeItem('password');
 			}
 			console.log('Логин:', username, 'Пароль:', password);
 
 			const response = await logIn(username, password);
-			sessionStorage.setItem('loginUser', JSON.stringify(response.user));
 			dispatch(loginSuccess(response.user));
 			navigate('/folder');
 			console.log('Вы успешно авторизованы! =)');
@@ -84,7 +79,7 @@ const Login: React.FC = () => {
 							checked={memory}
 							onChange={(e) => setMemory(e.target.checked)}
 						/>
-						Запомнить меня
+						Запомнить логин
 					</label>
 				</div>
 				<button type='submit' className='button-submit' disabled={isLoading}>Войти</button>

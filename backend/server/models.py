@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 
 
-allowed_extensions = ['tiff', 'jpg', 'png', 'jpeg', 'pdf', 'doc', 'docx', 'gif', 'exe']
+allowed_extensions = ['tiff', 'jpg', 'png', 'jpeg', 'pdf', 'doc', 'docx', 'gif', 'json', 'txt', 'csv']
 
 class User(AbstractUser):
     username = models.CharField(verbose_name='Логин', max_length=30, unique=True) # логин пользователя
