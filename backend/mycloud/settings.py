@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
+
+load_dotenv()
+
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ei(v1mrl=&*qdxbo3xv=g!+26&zoi*+*ly3q$3@hkso_1%ep88"
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,14 +98,25 @@ WSGI_APPLICATION = "mycloud.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        # "NAME": "diplom_new",
-        'NAME': 'diplom_serv',
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
-        "USER": "postgres",
-        "PASSWORD": "1",
+        "NAME": os.getenv("DB_NAME", "default_db"),
+        "HOST": os.getenv("DB_HOST", "127.0.0.1"),
+        "PORT": os.getenv("DB_PORT", "5432"),
+        "USER": os.getenv("DB_USER", "default_user"),
+        "PASSWORD": os.getenv("DB_PASSWORD", "default_password"),
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         # "NAME": "diplom_new",
+#         'NAME': 'diplom_serv',
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#         "USER": "postgres",
+#         "PASSWORD": "1",
+#     }
+# }
 
 
 # Password validation
