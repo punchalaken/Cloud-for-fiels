@@ -68,11 +68,10 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-- Сделайте миграции и выгрузите данные из заранее подготовленного файла loaddata.json:
+- Сделайте миграции:
 
 ```bash
 python manage.py migrate
-python manage.py loaddata loaddata.json
 ```
 
 ------------------------------------------------------------------------
