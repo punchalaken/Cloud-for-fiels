@@ -5,7 +5,7 @@
 
 1. Дипломное [задание](/_README.md)
 2. Инструкции по настройке [backend](/backend/README.md) на сервере!
-3. Инструкции по настройке [frontend](/frontend/README.md) на сервере!
+3. Инструкции по настройке [frontend](https://github.com/punchalaken/frontend-for-clouds/blob/main/README.md) на сервере!
 
 ## Как запустить локально: 
 
