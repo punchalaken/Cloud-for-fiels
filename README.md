@@ -19,11 +19,21 @@ cd backend
 2. Устанавливаем окружение.
 ```
 python -m venv venv
+
 ```
 
 3. Включаем окружение.
+
+Windows:
+
 ```
 venv\Scripts\activate
+```
+
+Linux:
+
+```
+source venv/bin/activate
 ```
 
 4. Устанавливаем зависимости из заранее подготовленного файла requirements.txt.
