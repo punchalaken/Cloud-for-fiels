@@ -2,6 +2,8 @@
 
 ## Облачное хранилище My Cloud
 
+Ссылка на [frontend часть приложения](https://github.com/punchalaken/frontend-for-clouds/tree/main)
+
 
 1. Дипломное [задание](/_README.md)
 2. Инструкции по настройке [backend](/backend/README.md) на сервере!
