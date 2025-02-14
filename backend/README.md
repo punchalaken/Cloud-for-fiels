@@ -91,8 +91,8 @@ After=network.target
 
 [Service]
 User=ubuntu
-WorkingDirectory=/home/ubuntu/diplom_MyCloud/backend
-ExecStart=/home/ubuntu/diplom_MyCloud/backend/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/diplom_MyCloud/backend/gunicorn.sock mycloud.wsgi:application
+WorkingDirectory=/home/ubuntu/Cloud-for-fiels/backend
+ExecStart=/home/ubuntu/Cloud-for-fiels/backend/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/Cloud-for-fiels/backend/gunicorn.sock mycloud.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -122,10 +122,10 @@ sudo nano /etc/nginx/sites-available/mycloud
 server {
     listen 80;
     server_name 194.67.88.152;
-    root /home/ubuntu/diplom_MyCloud/frontend/dist;
+    root /home/ubuntu/Cloud-for-fiels/frontend/dist;
 
     location /media/ {
-        alias /home/ubuntu/diplom_MyCloud/backend/mycloud/media/;
+        alias /home/ubuntu/Cloud-for-fiels/backend/mycloud/media/;
         default_type "image/jpg";
     }
     location / {
@@ -133,11 +133,11 @@ server {
     }
     location /api/ {
         include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/diplom_MyCloud/backend/mycloud/project.sock;
+        proxy_pass http://unix:/home/ubuntu/Cloud-for-fiels/backend/mycloud/project.sock;
     }
     location /a/ {
         include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/diplom_MyCloud/backend/mycloud/project.sock;
+        proxy_pass http://unix:/home/ubuntu/Cloud-for-fiels/backend/mycloud/project.sock;
     }
 }
 ```
