@@ -11,9 +11,14 @@
 
 ### Запуск backend части приложения: 
 
+1. Скачиваем репозиторий:
+```
+git clone https://github.com/punchalaken/Cloud-for-fiels
+```
+
 1. Переходим в папку бекенд разработки.
 ```
-cd backend
+cd backend Cloud-for-fiels/backend
 ```
 
 2. Устанавливаем окружение.
@@ -62,22 +67,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### Запуск frontend части приложения: 
-
-1. Переходим в папку с frontend частью проекта.
-```
-cd frontend 
-```
-
-2. Устанавливаем зависимости.
-```
-npm i 
-```
-
-3. Запускаем проект локально для разработки.
-```
-npm run dev
-```
+### [Запуск frontend части приложения](https://github.com/punchalaken/frontend-for-clouds)
 
 Доп надстройки:
 1. В файле [settings](/backend/mycloud/settings.py) в параметр ALLOWED_HOSTS вносим IP сервера, например: ["89.111.154.37"]
