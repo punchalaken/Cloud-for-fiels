@@ -68,6 +68,12 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+- Создайте файл тепеменных .env, в котором укажите все переменные, по шаблону из .env.examle
+
+```bash
+nano .env
+```
+
 - Сделайте миграции:
 
 ```bash
