@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 
 
 export const BASE_URL = 'http://localhost:7000/api';
-// export const BASE_URL = 'http://89.111.154.37:80/api';
+// export const BASE_URL = 'http://89.111.154.37:8000/api';
 
 const getCookie = (name: string): string | null => {
   let cookieValue = null;
