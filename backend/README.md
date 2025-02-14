@@ -147,73 +147,17 @@ server {
     }
 }
 ```
-Так же поменяем конфиг:
-
-```bash
-sudo nano /etc/nginx/nginx.config
-```
-
-Впишите следующий код, сменив имя пользователя:
-
-```bash
-user ubuntu;
-worker_processes auto;
-pid /run/nginx.pid;
-include /etc/nginx/modules-enabled/*.conf;
-
-events {
-    worker_connections 768;
-}
-
-http {
-    sendfile on;
-    tcp_nopush on;
-    types_hash_max_size 2048;
-
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-    ssl_prefer_server_ciphers on;
-
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log;
-
-    gzip on;
-
-    include /etc/nginx/conf.d/*.conf;
-    include /etc/nginx/sites-enabled/*;
-}
-```
-
 - Создайте символическую ссылку на конфиг
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/mycloud /etc/nginx/sites-enabled
 ```
 
-- Также вы можете настроить максимальный размер файла для загрузки:
-
-```bash
-sudo nano /etc/nginx/nginx.conf
-```
-
-- Добавив следующие строки в http{} (в данном примере ограничение 15мб)  
-client_max_body_size 15M;  
-client_body_buffer_size 15M;
-
 - Переопределите конфиг сервера nginx и проверьте его работоспособность:
 
 ```bash
 sudo systemctl reload nginx
 sudo systemctl status nginx
-```
-
-- Логи nginx:
-
-```bash
-sudo nano /var/log/nginx/access.log
-sudo nano /var/log/nginx/error.log
 ```
 
 ### Теперь ваш сайт должен работать, хорошего пользования)
