@@ -120,7 +120,7 @@ sudo nano /etc/nginx/sites-available/mycloud
 
 ```bash
 server {
-    listen 8000;
+    listen 80;
     server_name 194.67.88.152;
     root /home/ubuntu/Cloud-for-fiels/frontend/dist;
 
