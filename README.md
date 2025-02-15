@@ -75,5 +75,5 @@ python manage.py runserver
 
 Доп надстройки:
 1. В файле [settings](/backend/mycloud/settings.py) в параметр ALLOWED_HOSTS вносим IP сервера, например: ["89.111.154.37"]
-2. В файле [api.ts](/frontend/src/api/api.ts) поменять параметр BASE_URL в зависимости от вашего сервера. Например: export const BASE_URL = 'http://89.111.154.37:8000/api';
+2. В файле [api.ts](/frontend/src/api/api.ts) поменять параметр BASE_URL в зависимости от вашего сервера. Например: export const BASE_URL = 'http://89.111.154.37:80/api' - запросы проксируются на 80 порт;
 3. Чтобы зайти под администратором ввведите - Логин: admin - Пароль: admin
