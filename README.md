@@ -4,6 +4,8 @@
 
 Ссылка на [frontend часть приложения](https://github.com/punchalaken/frontend-for-clouds/tree/main)
 
+[Ссылка на задеплоинный проект](http://89.111.154.37/)
+
 
 1. Дипломное [задание](/_README.md)
 2. Инструкции по настройке [backend](/backend/README.md) на сервере!
