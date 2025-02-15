@@ -1,6 +1,6 @@
 # Backend
 
-## Развёртывание на сервере Linux Ubuntu
+## Развёртывание на сервере Linux ubuntu
 
 ### 1. Для удобного управления из своего терминала, скопируйте публичную часть ssh ключа на сервер:  
 
@@ -88,7 +88,7 @@ python manage.py migrate
 sudo nano /etc/systemd/system/gunicorn.service
 ```
 
-- Впишите следующий код, где смените `ubuntu` на вашего пользователя:
+- Впишите следующий код, где смените `[ubuntu]` на вашего пользователя:
 
 ```bash
 [Unit]
@@ -96,9 +96,9 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=ubuntu
-WorkingDirectory=/home/ubuntu/Cloud-for-fiels/backend
-ExecStart=/home/ubuntu/Cloud-for-fiels/backend/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/Cloud-for-fiels/backend/gunicorn.sock mycloud.wsgi:application
+User=[ubuntu]
+WorkingDirectory=/home/[ubuntu]/Cloud-for-fiels/backend
+ExecStart=/home/[ubuntu]/Cloud-for-fiels/backend/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/[ubuntu]/Cloud-for-fiels/backend/gunicorn.sock mycloud.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -127,11 +127,11 @@ sudo nano /etc/nginx/sites-available/mycloud
 ```bash
 server {
     listen 80;
-    server_name 194.67.88.152;
-    root /home/ubuntu/Cloud-for-fiels/frontend/dist;
+    server_name [Ваш URL];
+    root /home/[ubuntu]/Cloud-for-fiels/dist;
 
     location /media/ {
-        alias /home/ubuntu/Cloud-for-fiels/backend/mycloud/media/;
+        alias /home/[ubuntu]/Cloud-for-fiels/backend/mycloud/media/;
         default_type "image/jpg";
     }
     location / {
@@ -139,11 +139,11 @@ server {
     }
     location /api/ {
         include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/Cloud-for-fiels/backend/mycloud/project.sock;
+        proxy_pass http://unix:/home/[ubuntu]/Cloud-for-fiels/backend/mycloud/project.sock;
     }
     location /a/ {
         include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/Cloud-for-fiels/backend/mycloud/project.sock;
+        proxy_pass http://unix:/home/[ubuntu]/Cloud-for-fiels/backend/mycloud/project.sock;
     }
 }
 ```
