@@ -34,19 +34,12 @@ class User(AbstractUser):
 
 def _create_directory_path(instance, filename):
     """Генерация пути и создание директории для пользователя внутри `uploads`."""
-    print(f'Вызов функции для сохранения файла!!!!!!!!')
 
     # Только пользовательская папка будет добавляться к "uploads"
     user_folder = instance.user.folder_name
     user_name = filename
-    print(f'Создаем user_name: {user_name}')
-    print(f'Создаем user_folder: {user_folder}')
-
     full_path = os.path.join(settings.MEDIA_ROOT, user_folder)  # "uploads" добавляется здесь
     os.makedirs(full_path, exist_ok=True)
-
-    print(f'Создаем директорию: {full_path}')
-    print(f'Имя файла для сохранения: {filename}')
 
     # Возвращаем путь от "uploads" (относительный)
     return os.path.join(user_folder, filename)
@@ -75,28 +68,22 @@ class File(models.Model):
 
         counter = 1
         unique_name = file_name_only
-        print(f'extention: {extention}')
-        print(f'unique_name: {unique_name}')
         # Проверка, существует ли файл с таким именем у пользователя, если да, то создаем уникальное имя
         while File.objects.filter(user=user_id, file_name=unique_name).exists():
             unique_name = f'{base_name}_{counter}{extention}'
-            print(f"base_name: {base_name}, counter: {counter}, extention: {extention}")
             counter += 1
 
         path = f"{user.folder_name}/"
         file_name = unique_name
-        print(f"код вызвался, путь: {path}, имя файла: {file_name}")
         return path, file_name
 
     def save(self, *args, **kwargs):
-        print(f'Запуск метода save для {self.file_name}')
         
         # Проверка, вызывается ли сохранение при обновлении файла
         if not self.pk:
             # Генерация уникального идентификатора
             if not self.unique_id:
                 self.unique_id = uuid4().hex
-            print(f"self.pk1111111: {self.pk}")
             # Проверка расширения файла
             if not Path(self.file_name).suffix:
                 extension = os.path.splitext(self.file.name)[1]
@@ -105,15 +92,8 @@ class File(models.Model):
             # Установка пути и имени файла
             self.path, unique_file_name = self.created_path_and_file_name(self.user.id, self.file_name)
             self.file.name = unique_file_name  # Уникальное имя файла
-            print(f'Полный путь для сохранения: {self.path}')
         else:
-            print(f"self.pk22222222: {self.__dict__}")
-            # Если это обновление записи, путь и имя файла не меняются
-            print(f'Обновление записи без изменения пути и имени файла.')
-
-        # Вызов оригинального метода `save` для завершения сохранения
         try:
             super().save(*args, **kwargs)
-            print(f'Файл {self.file.name} успешно сохранен.')
         except Exception as e:
-            print(f'Ошибка при сохранении файла: {e}')
+            print(f"Ошибка при сохранении файла: {e}")
