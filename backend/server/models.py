@@ -93,6 +93,7 @@ class File(models.Model):
             self.path, unique_file_name = self.created_path_and_file_name(self.user.id, self.file_name)
             self.file.name = unique_file_name  # Уникальное имя файла
         else:
+            print(f'Обновление записи без изменения пути и имени файла.')
         try:
             super().save(*args, **kwargs)
         except Exception as e:
