@@ -74,6 +74,7 @@ class FileSerializer(serializers.ModelSerializer):
                     attributes['path'] = path
                     attributes['file_name'] = file_name
                 else:
+                    print("Имя файла не указано и не передано в запросе.")
             else:
                 path, file_name = File().created_path_and_file_name(user_id, final_file_name)
                 attributes['path'] = path
