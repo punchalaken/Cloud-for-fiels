@@ -151,14 +151,15 @@ CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://89.111.154.37",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    "http://localhost:5173",
+    r"^http://89\.111\.154\.37$",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
+     "http://89.111.154.37",
 ]
 
 REST_FRAMEWORK = {
