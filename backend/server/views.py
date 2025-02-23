@@ -59,7 +59,6 @@ class UserViewSet(viewsets.ModelViewSet):
         response_data = {
             "message": "Успешная регистрация",
             "user": UserSerializer(user).data,
-            "token": token.key,
         }
         return JsonResponse(response_data, status=status.HTTP_201_CREATED)
 
@@ -140,7 +139,6 @@ def user_login(request):
 
                 response_data = {
                     "message": "Успешная авторизация",
-                    "token": token.key,
                     "user": {
                         "id": user.id,
                         "username": user.username,
