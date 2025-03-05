@@ -59,7 +59,6 @@ class UserViewSet(viewsets.ModelViewSet):
         response_data = {
             "message": "Успешная регистрация",
             "user": UserSerializer(user).data,
-            "token": token.key,
         }
         return JsonResponse(response_data, status=status.HTTP_201_CREATED)
 
@@ -140,7 +139,6 @@ def user_login(request):
 
                 response_data = {
                     "message": "Успешная авторизация",
-                    "token": token.key,
                     "user": {
                         "id": user.id,
                         "username": user.username,
@@ -195,7 +193,6 @@ def user_logout(request):
 
             logout(request)
             response_data = {"message": "Вы вышли из аккаунта"}
-            print("вы разлогинились")
             return JsonResponse(response_data, status=status.HTTP_200_OK)
 
         except json.JSONDecodeError:
@@ -301,20 +298,12 @@ class FileViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
         file = request.FILES.get("file")
-        print("Все файлы в запросе:", request.FILES)  # Логируем все файлы в запросе
         if file:
             data["file"] = file
-            print("Тип файла:", type(file))
-            print("Размер файла:", file.size)
-        print(f"Файл получен data: {data}")
-        print(f"Файл получен file: {file}")
-        print("Получен файл:", request.FILES.get("file"))
         serializer = FileSerializer(data=data, context={"request": request})
 
         if serializer.is_valid():
             file_instance = serializer.save(user=request.user)
-            print(f"отправляем в сериалайзер! {file_instance}")
-            print("Данные: ", serializer.data)
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -338,21 +327,14 @@ class FileViewSet(viewsets.ModelViewSet):
         return Response(data)
 
     def update(self, request, *args, **kwargs):
-        print(f"request: {request.data}")
-        print(
-            "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        )
         pk = kwargs.get("pk")
         file_instance = self.queryset.filter(user=request.user, pk=pk).first()
 
         if not file_instance:
-            print("файл не найден.")
             return Response(
                 {"message": "Файл не найден"}, status=status.HTTP_404_NOT_FOUND
             )
 
-        print(f"request.data: {request.user}")
-        print(f"file_instance: {file_instance.__dict__}")
 
         request_data = request.data.copy()  # Создаем копию данных запроса
         request_data["user_id"] = file_instance.user_id
@@ -361,7 +343,6 @@ class FileViewSet(viewsets.ModelViewSet):
         request_data["size"] = file_instance.size
         request_data["path"] = file_instance.path
         request_data["unique_id"] = file_instance.unique_id
-        print(f"request_data: {request_data}")
         serializer = FileSerializer(file_instance, data=request_data, partial=True)
         if serializer.is_valid():
             serializer.save()
@@ -381,14 +362,11 @@ class FileViewSet(viewsets.ModelViewSet):
         # Здесь мы используем file_instance.file.name для получения имени файла
         file_path = os.path.join(settings.MEDIA_ROOT, file_instance.file.name)
         file_path = os.path.normpath(file_path)  # Нормализуем путь
-        print(f"file_path: {file_path}")
 
         # Проверяем существование файла и удаляем его
         if os.path.isfile(file_path):
-            print("тык тык")
             try:
                 os.remove(file_path)  # Удаляем файл по правильному пути
-                print(f"Файл {file_path} успешно удалён из хранилища.")
             except OSError as error:
                 return Response(
                     {"message": f"Ошибка при удалении файла: {error}"},
@@ -397,7 +375,6 @@ class FileViewSet(viewsets.ModelViewSet):
 
         # Удаляем запись из базы данных
         file_instance.delete()
-        print(f"Файл {file_path} успешно удалён из хранилища.")
         return self.list(request)
         return Response(
             {"message": "Файл успешно удален"}, status=status.HTTP_204_NO_CONTENT
@@ -409,7 +386,6 @@ class FileViewSet(viewsets.ModelViewSet):
 def get_link(request):
     user_id = request.user.id
     file_id = request.query_params["file_id"]
-    print(f"request.user.is_staff: {request.user.is_staff}")
     if request.user.is_staff:
         file = File.objects.filter(id=file_id).first()
     else:
@@ -432,7 +408,6 @@ def get_file(request, link):
     if file:
         # Формируем полный путь к файлу
         file_path = os.path.join(settings.MEDIA_ROOT, file.file.name)
-        print(f"file path1: {file_path}")
         file_path = os.path.normpath(file_path)
 
         logger.info(f"Attempting to access file at: {file_path}")
@@ -448,7 +423,6 @@ def get_file(request, link):
             File.objects.filter(id=file.id).update(last_download_date=date.today())
 
             # Отправляем файл как ответ
-            print(f"file.file_name: {file.file_name}")
             return FileResponse(
                 open(file_path, "rb"),
                 status=status.HTTP_200_OK,

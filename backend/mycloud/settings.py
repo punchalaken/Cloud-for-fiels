@@ -59,17 +59,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",  # Защита от clickjacking.
 ]
 
-# MIDDLEWARE = [
-#     "django.middleware.security.SecurityMiddleware",  # Должен быть первым для обеспечения безопасности.
-#     "django.contrib.sessions.middleware.SessionMiddleware",  # Управление сессиями.
-#     "django.middleware.common.CommonMiddleware",  # Обработка общих запросов, таких как перенаправления.
-#     "django.middleware.csrf.CsrfViewMiddleware",  # Защита от CSRF-атак.
-#     "django.contrib.auth.middleware.AuthenticationMiddleware",  # Управление аутентификацией.
-#     "django.contrib.messages.middleware.MessageMiddleware",  # Работа с сообщениями.
-#     "django.middleware.clickjacking.XFrameOptionsMiddleware",  # Защита от clickjacking.
-#     "corsheaders.middleware.CorsMiddleware",  # Должен идти до CommonMiddleware, чтобы CORS заголовки добавлялись к ответам.
-# ]
-
 ROOT_URLCONF = "mycloud.urls"
 
 TEMPLATES = [
@@ -147,18 +136,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:7000",
+    "http://localhost:5173",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    "http://localhost:7000",
+    "http://localhost:5173",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:7000",
+    "http://localhost:5173",
 ]
 
 REST_FRAMEWORK = {

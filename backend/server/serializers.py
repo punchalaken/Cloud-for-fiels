@@ -50,27 +50,20 @@ class FileSerializer(serializers.ModelSerializer):
     # проверяем, есть ли уже файл с таким же именем
     def validate(self, attributes):
         if self.instance is None:
-            print('ВыЗыВаЕтСя! validate CREATE!!!!!')
-            print(f'attributes1: {attributes}')
             
             name = attributes.get('file_name')
-            print('валидация имя файла:', name)
 
             user_id = attributes.get('user_id') or getattr(self.instance, 'user_id', None) or self.context.get('user_id')
-            print('Проверка user_id1:', user_id)
             
             # Если `user_id` не найден в данных, берём его из контекста запроса
             if not user_id and 'request' in self.context:
                 user_id = self.context['request'].user.id
-                print('Проверка user_id2:', user_id)
 
             # Проверка существования файла с таким же именем
             file_exists = File.objects.filter(user=user_id, file_name=name).exists()
-            print("Файл с таким именем существует:", file_exists)
             
             # Обработка случая, если `name` и `file` не заданы
             if not name and 'file' not in attributes:
-                print("Имя файла и файл отсутствуют в данных.")
                 raise serializers.ValidationError("Имя файла или сам файл должны быть указаны.")
 
             # Генерация пути для нового имени файла
@@ -80,30 +73,22 @@ class FileSerializer(serializers.ModelSerializer):
                     path, file_name = File().created_path_and_file_name(user_id, final_file_name)
                     attributes['path'] = path
                     attributes['file_name'] = file_name
-                    print('Имя файла изменено на:', file_name)
                 else:
                     print("Имя файла не указано и не передано в запросе.")
             else:
                 path, file_name = File().created_path_and_file_name(user_id, final_file_name)
                 attributes['path'] = path
                 attributes['file_name'] = file_name
-                print('Имя файла осталось такое же:', file_name)
 
-            print(f'attributes3: {attributes}')
             return attributes
         else:
-            print('ВыЗыВаЕтСя! validate!!!!!')
-            print(f'attributes1: {attributes}')
             name = attributes.get('file_name')
-            print('валидация имя файла:', name)
 
             user_id = attributes.get('user_id') or getattr(self.instance, 'user_id', None) or self.context.get('user_id')
-            print('Проверка user_id1:', user_id)
             # Если `user_id` не найден в данных, берём его из контекста запроса
 
             # Проверка существования файла с таким же именем
             file_exists = File.objects.filter(user=user_id, file_name=name).exists()
-            print("Файл с таким именем существует:", file_exists)
             new_comment = attributes.get('comment')
             if new_comment and self.instance:
                 self.instance.comment = new_comment  # Обновляем комментарий в экземпляре
@@ -113,7 +98,6 @@ class FileSerializer(serializers.ModelSerializer):
 
     # создание файла
     def create(self, validated_datа):
-        print(f'validated_datа: {validated_datа}')
         user = validated_datа.get('user_id')
         file_name = validated_datа.get('file_name')
         existing_file = File.objects.filter(user=user, file_name=file_name).first()
@@ -132,8 +116,6 @@ class FileSerializer(serializers.ModelSerializer):
     # обновление файла
     def update(self, instance, validated_data):
         # Обрабатываем `file` только если оно есть в данных для обновления
-        print(f"instance: {instance}")
-        print(f"validated_data: {validated_data}")
         for attr, value in validated_data.items():
             if attr == 'file' and value:
                 if instance.file and instance.file.name != value.name:
