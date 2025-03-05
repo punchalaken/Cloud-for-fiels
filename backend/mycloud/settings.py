@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 # ALLOWED_HOSTS = ["89.111.154.37"]
 
 
@@ -150,15 +150,15 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "http://localhost:7000",
 ]
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    "http://localhost:5173",
+    "http://localhost:7000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
+    "http://localhost:7000",
 ]
 
 REST_FRAMEWORK = {
